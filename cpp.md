@@ -15,3 +15,6 @@ A a = 2;
 - shared_from_this的作用
 - T&、std::unique_ptr<T>、std::unique_ptr<T> &, std::unique_ptr<T> &&的区别?
 - shared_ptr是线程安全的吗？如何做到线程安全?
+- 内联函数、构造函数、静态成员函数可以是虚函数吗?
+- inline关键字用来做什么？什么情况下会内联什么情况下不会内联？
+- 什么是结构体内存对齐，如何内存对齐，内存对齐有什么好处？
