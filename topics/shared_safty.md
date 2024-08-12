@@ -9,6 +9,7 @@ https://www.boost.org/doc/libs/1_57_0/libs/smart_ptr/shared_ptr.htm#ThreadSafety
 - 3）共享引用计数的不同的shared_ptr被多个线程”写“ 是安全的；
 ```
  A shared_ptr instance can be "read" (accessed using only const operations) simultaneously by multiple threads.
- Different shared_ptr instances can be "written to" (accessed using mutable operations such as operator= or reset) simultaneously by multiple threads (even when these instances are copies, and share the same reference count underneath.)
+ Different shared_ptr instances can be "written to" (accessed using mutable operations such as operator= or reset) simultaneously 
+ by multiple threads (even when these instances are copies, and share the same reference count underneath.)
  Any other simultaneous accesses result in undefined behavior.
  ```
