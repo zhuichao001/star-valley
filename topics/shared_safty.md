@@ -1,6 +1,6 @@
 
 ## shared_ptr线程安全性
-``
+```
 boost官方文档中有如下结论：
 https://www.boost.org/doc/libs/1_57_0/libs/smart_ptr/shared_ptr.htm#ThreadSafety
 ```
