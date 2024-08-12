@@ -16,25 +16,22 @@ https://www.boost.org/doc/libs/1_57_0/libs/smart_ptr/shared_ptr.htm#ThreadSafety
 
 ## 举例
 ```
-shared_ptr<Foo> g(new Foo1); // 线程之间共享的 shared_ptr
-shared_ptr<Foo> x; // 线程 A 的局部变量
-shared_ptr<Foo> n(new Foo2); // 线程 B 的局部变量
+shared_ptr<Foo> g(new Foo(1)); // 线程之间共享的 shared_ptr
+shared_ptr<Foo> m; // 线程 A 的局部变量
+shared_ptr<Foo> n(new Foo(2)); // 线程 B 的局部变量
 -------------------------------------------
 线程 A
-x = g; （即 read g） //代码1 :赋值指针,赋值 引用计数
+m = g; （即 read g） //代码1 :赋值指针, 赋值引用计数
 -------------------------------------------
 线程 B
-g = n;//代码2 :动作A 清空原来G指向Foo1, 动作B 然后重新赋值 Foo2
+g = n; （即 write g）//代码2 :清空原来G指向Foo1, 然后重新赋值 Foo2
 ```
 
 - 测试场景：
 ```
-
 线程A 
-  智能指针x 读取Foo1,然后还重置Foo1计数。
+  智能指针m 读取Foo1, 即将增加Foo1计数。
 
-  线程 B:
-   销毁了Foo1
-   线程A
-   重置计数是，foo1已经被销毁。
+线程 B:
+  减少Foo1的引用计数，并且销毁了Foo1
 ```
